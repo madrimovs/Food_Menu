@@ -13,6 +13,8 @@ const elTemplate = findelement("#template");
 const breakfastCard = findelement("#breakfast");
 
 function renderMenu(array, parent = elCards) {
+	const fragment = document.createDocumentFragment();
+
 	array.forEach((menuArr) => {
 		const card = elTemplate.content.cloneNode(true);
 
@@ -24,8 +26,10 @@ function renderMenu(array, parent = elCards) {
 		title.textContent = menuArr.title.toUpperCase();
 		desc.textContent = menuArr.desc;
 
-		parent.appendChild(card);
+		fragment.appendChild(card);
 	});
+
+	parent.appendChild(fragment);
 }
 renderMenu(menu);
 
